@@ -1,13 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>inicio</ion-title>
+  <ion-toolbar class="contenedor-header">
+   
+    <ion-img slot="start" class="icono" src="..\assets\icon\image.png"> </ion-img>
+
+    <ion-title slot="end">Inicio</ion-title>
+  
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-list>
+    <ion-item *ngFor="let c of componentes" [routerLink] = "c.redirecTo" detail = true>
+      <ion-icon [name] = "c.icon" slot="start" color="primary"></ion-icon>
+      {{c.name}}
+    </ion-item>
+  </ion-list>
+
+
 </ion-content>
