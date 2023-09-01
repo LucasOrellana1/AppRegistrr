@@ -1,3 +1,28 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="main">
+    
+    <ion-header>
+      <ion-toolbar >
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let c of componentes" [routerLink] = "c.redirecTo" detail = true>
+          <ion-icon [name] = "c.icon" slot="start" color="primary"></ion-icon>
+          {{c.name}}
+        </ion-item>
+       
+        
+        
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- Router-Outlet sirve para cargar un componente segun la ruta seleccioanda-->
+  <!--La id definida apunta al contenido del menu, es asi como la seleccionas-->
+
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

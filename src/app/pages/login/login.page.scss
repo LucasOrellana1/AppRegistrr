@@ -1,0 +1,26 @@
+.contenedor-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+
+    .icono{
+    max-width: 5rem;
+    margin: 0rem;
+}
+}
+
+
+.centered-card {
+  max-width: 400px; /* Ajusta el ancho según tus necesidades */
+  width: 100%;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
