@@ -1,0 +1,37 @@
+.contenedor-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+
+    .icono{
+    max-width: 12rem;
+    margin: 0rem;
+}
+}
+
+
+.centered-card {
+  max-width: 400px; /* Ajusta el ancho según tus necesidades */
+  width: 100%;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.cardcolor{
+    background: #817765b0;
+   
+}
+
+.titulocard{
+    color: rgb(58, 58, 58);
+
+}

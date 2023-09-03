@@ -26,9 +26,9 @@ export class AppComponent {
       redirecTo: '/about'
     },
     {
-      icon: 'Camera',
-      name: 'Camara',
-      redirecTo: '/camara'
+      icon: 'clipboard',
+      name: 'Login',
+      redirecTo: ''
     },
   ]
 }
