@@ -9,21 +9,21 @@
 <ion-content class="ion-padding body">
   <div class="contenedor">
     <ion-card class="centered-card">
-      <ion-card-header>
-        <ion-card-title>Login</ion-card-title>
+      <ion-card-header class="cardcolor">
+        <ion-card-title class="cardcolor">Login</ion-card-title>
       </ion-card-header>
 
-      <ion-card-content class="contenedor-login ">
+      <ion-card-content class="contenedor-login cardcolor">
         
         <ion-img slot="start" class="icono" src="..\assets\icon\image.png"> </ion-img>
-        <ion-input placeholder="Ingrese su usario"></ion-input>
-        <ion-input placeholder="Ingrese su Contraseña"></ion-input>
+        <ion-input class="textcolor" placeholder="Ingrese su usario"></ion-input>
+        <ion-input class="textcolor" placeholder="Ingrese su Contraseña"></ion-input>
 
-        <ion-button routerLink="/inicio" expand="block" fill="clear" shape="round">
+        <ion-button class="btncolor" routerLink="/inicio" expand="block" fill="clear" shape="round">
           Login
         </ion-button>
 
-        <ion-router-link routerLink="/register" routerDirection="forward">¿No tiene una cuenta? Registrate aqui</ion-router-link>
+        <ion-router-link class="btncolor" routerLink="/register" routerDirection="forward">¿No tiene una cuenta? Registrate aqui</ion-router-link>
 
 
       </ion-card-content>
