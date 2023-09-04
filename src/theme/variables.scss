@@ -233,10 +233,7 @@
   }
 }
 //Globales para cada page
-ion-toolbar{
-  --ion-toolbar-background: #453732;
-  color: white;
-}
+
 
 ion-content{
   --background: #F5EBDC ;
@@ -276,5 +273,17 @@ ion-menu{
   }
   ion-list{
     padding: 0rem !important;
+  }
+}
+
+ion-toolbar{
+  --ion-toolbar-background: #453732;
+  color: white;
+
+  ion-button{
+    --color: #3f2e27 !important;
+    --background: white !important;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
   }
 }
