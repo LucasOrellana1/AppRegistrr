@@ -233,6 +233,11 @@
   }
 }
 //Globales para cada page
+ion-toolbar{
+  --ion-toolbar-background: #453732;
+  color: white;
+}
+
 ion-content{
   --background: #F5EBDC ;
 
@@ -259,7 +264,17 @@ ion-content{
     --highlight-color-focused: #3f2e27 !important;
     --highlight-color-focused-md: #3f2e27 !important;
     --highlight-color-focused-ios: #3f2e27 !important;
-  }
+  } 
+
   
 }
 
+ion-menu{
+  ion-item{
+    --background: #F5EBDC !important;
+
+  }
+  ion-list{
+    padding: 0rem !important;
+  }
+}
