@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-
+  nombreEstudiante = 'Juan';
+  apellidoEstudiante = 'Pérez';
+  edadEstudiante = 20;
+  carreraEstudiante = 'Ingeniería Informática';
+  
   constructor() { }
 
   ngOnInit() {

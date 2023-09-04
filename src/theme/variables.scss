@@ -232,3 +232,34 @@
 
   }
 }
+//Globales para cada page
+ion-content{
+  --background: #F5EBDC ;
+
+  ion-button{
+    color: #3f2e27;
+    background: #776862;
+    border-radius: 0.5rem;
+    
+
+  }
+
+  ion-router-link{
+    color: #776862;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+
+  ion-input {
+    --highlight-color-focused: #3f2e27 !important;
+  }
+  
+  /* Cambia el color del subrayado a rojo cuando el campo está desenfocado */
+  ion-input {
+    --highlight-color-focused: #3f2e27 !important;
+    --highlight-color-focused-md: #3f2e27 !important;
+    --highlight-color-focused-ios: #3f2e27 !important;
+  }
+  
+}
+

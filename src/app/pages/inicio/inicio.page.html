@@ -14,8 +14,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   
-
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nombre del Estudiante</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>Nombre:</ion-label>
+          <ion-text>{{ nombreEstudiante }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Apellido:</ion-label>
+          <ion-text>{{ apellidoEstudiante }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Edad:</ion-label>
+          <ion-text>{{ edadEstudiante }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Carrera:</ion-label>
+          <ion-text>{{ carreraEstudiante }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
