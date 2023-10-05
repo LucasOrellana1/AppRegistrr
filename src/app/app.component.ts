@@ -30,5 +30,10 @@ export class AppComponent {
       name: 'Login',
       redirecTo: ''
     },
+    {
+      icon: 'clipboard',
+      name: 'Datos',
+      redirecTo: '/datos',
+    }
   ]
 }
