@@ -1,31 +1,44 @@
+<ion-header [translucent]="true">
+  
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+    <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <form [formGroup] = "formularioLogin">
 
-<ion-content class="ion-padding body">
-  <div class="contenedor">
-    <ion-card class="centered-card">
-      <ion-card-header class="cardcolor">
-        <ion-card-title class="cardcolor">Login</ion-card-title>
-      </ion-card-header>
+        <ion-item>
+          <ion-label position="floating">Correo: </ion-label>
+          <ion-input formControlName="correo"></ion-input>
+        </ion-item>
 
-      <ion-card-content class="contenedor-login cardcolor">
-        
-        <ion-img slot="start" class="icono" src="..\assets\icon\image.png"> </ion-img>
-        <ion-input class="textcolor" placeholder="Ingrese su usario"></ion-input>
-        <ion-input class="textcolor" placeholder="Ingrese su Contraseña"></ion-input>
-
-        <ion-button class="btncolor" routerLink="/inicio" expand="block" fill="clear" shape="round">
-          Login
-        </ion-button>
-
-        <ion-router-link class="btncolor" routerLink="/register" routerDirection="forward">¿No tiene una cuenta? Registrate aqui</ion-router-link>
-
-
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-
-
-
+        <ion-item>
+          <ion-label position="floating">Password: </ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+      </form>
+      <br>
+      <ion-button (click)="Ingresar()" expand="block" fill="outline" shape="round"> Ingresar</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/register']">Registrarse
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

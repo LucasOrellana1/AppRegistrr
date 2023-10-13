@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 
-@Injectable({
-  providedIn: 'root'
-}) 
+
 
 export interface Datos {
   id: number;
@@ -14,26 +12,32 @@ export interface Datos {
   rut: string; 
   modified: number;
 
-
 }
 
 const ITEMS_KEY = 'my-datos'; 
-
+@Injectable({
+  providedIn: 'root'
+}) 
 
 export class ServicedatosService{
   //***
   private _storage: Storage | null = null ;
-
+  newUser : Datos = <Datos>{};
 
   constructor(private storage: Storage){
     this.init();
-
   };
 
   async init() {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this._storage = storage;
+  }
+
+  // Create and expose methods that users of this service can
+  // call, for example:
+  public set(key: string, value: any) {
+    this._storage?.set(key, value);
   }
 
   async addDatos(dato: Datos):Promise<any>{
@@ -88,8 +92,5 @@ async deleteDatos(id: number):Promise<Datos> {
   }
   return this.storage.set(ITEMS_KEY, toKeep);
 });
-
-
 }
-
 }

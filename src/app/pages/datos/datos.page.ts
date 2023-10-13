@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonList, Platform, ToastController } from '@ionic/angular';
-import { Datos, ServicedatosService } from 'src/app/services/servicesdatos.service';
+import { Datos, ServicedatosService } from 'src/app/services/original-mydatos/servicesdatos.service';
 
 @Component({
   selector: 'app-datos',

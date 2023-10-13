@@ -1,32 +1,41 @@
+<ion-header>
+ 
+  <ion-toolbar >
+     
+ 
 
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content class="ion-padding "  >
-  <div class="contenedor">
-    <ion-card class="card-css centered-card cardcolor" >
-      <ion-card-header>
-        <ion-card-title class="titulocard">Registrarse</ion-card-title>
-      </ion-card-header>
-      
-      <ion-card-content class="contenedor-login">
-        
-        <ion-img slot="start" class="icono" src="..\assets\icon\image.png" style="height: 300px;width: 300px;"> </ion-img>
-        <ion-input class="textcolor" placeholder="Ingrese su Correo"></ion-input>
-        <ion-input class="textcolor" placeholder="Ingrese su usario"></ion-input>
-        <ion-input class="textcolor" placeholder="Ingrese su Contraseña"></ion-input>
-        <ion-input class="textcolor" placeholder="Vuelva a ingresar su Contraseña"></ion-input>
-        
-        <ion-button  routerLink="/inicio" expand="block" fill="clear" shape="round">
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="text" formControlName="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirma Password</ion-label>
+          <ion-input type="password" formControlName="confirmPass"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="CrearUsuario()" expand="block" fill="outline" shape="round" routerLink="/">
           Registrarse
         </ion-button>
-        
-        <ion-router-link class="btncolor" routerLink="/inicio" routerDirection="forward">Cancelar</ion-router-link>
-        
-        
-      </ion-card-content>
-    </ion-card>
-  </div>
-    
-    
-
-
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
