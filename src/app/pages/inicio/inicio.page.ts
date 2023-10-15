@@ -16,6 +16,13 @@ export class InicioPage implements OnInit {
   
   constructor() { }
 
+  async logout(){
+    localStorage.removeItem('ingresado');
+    window.location.reload();
+
+  }
+
+
   ngOnInit() {
   }
 

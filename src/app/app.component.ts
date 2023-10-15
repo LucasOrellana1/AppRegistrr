@@ -16,24 +16,11 @@ export class AppComponent {
 
   componentes : Componente[] = [
     {
-    icon: 'american-football-outline',
-    name: 'Register',
-    redirecTo: '/register'
-    },
-    {
       icon: 'clipboard-outline',
       name: 'About',
       redirecTo: '/about'
     },
-    {
-      icon: 'clipboard',
-      name: 'Login',
-      redirecTo: ''
-    },
-    {
-      icon: 'clipboard',
-      name: 'Datos',
-      redirecTo: '/datos',
-    }
+    
+
   ]
 }

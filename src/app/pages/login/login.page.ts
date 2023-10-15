@@ -42,16 +42,18 @@ export class LoginPage implements OnInit {
     var a = 0;
     this.registroServicie.getUsuarios().then(datos =>{
       this.usuarios=datos;
-/*       if (datos.length==0)
+     if (datos == null)
       {
+        this.alertMsgP("Error" ,"No hay cuentas almacenadas");
         return null;
       }
- */
+ 
       for(let obj of this.usuarios){
         if (obj.correoUsuario == f.correo && obj.passUsuario == f.password){
           a=1
           console.log('ingresado');
           localStorage.setItem('ingresado', 'true');
+          this.alertMsgP('Bienvenido', 'n ' + obj.nomUsuario);
           this.navController.navigateRoot('inicio');
         }
       }
@@ -59,13 +61,27 @@ export class LoginPage implements OnInit {
       if (a==0){
         this.alertMsg();
       }
+    
+      return null;
     });
+    
   }
+  
 
   async alertMsg(){
     const alert = await this.alterController.create({
       header: 'Error...',
-      message: '!Los datos ingresados no son correctos',
+      message: '!Los datos ingresados no son correctos o no existen',
+      buttons: ['Aceptar'],
+    });
+      await alert.present();
+      return;
+  }
+
+  async alertMsgP(header : string , msg: string){
+    const alert = await this.alterController.create({
+      header: header,
+      message: msg,
       buttons: ['Aceptar'],
     });
       await alert.present();

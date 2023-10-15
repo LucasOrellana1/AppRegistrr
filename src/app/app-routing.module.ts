@@ -28,12 +28,12 @@ const routes: Routes = [
     path: 'context',
     loadChildren: () => import('./pages/context/context.module').then( m => m.ContextPageModule),
     canActivate: [IngresadoGuard]
+  },  {
+    path: 'register-docente',
+    loadChildren: () => import('./pages/register-docente/register-docente.module').then( m => m.RegisterDocentePageModule)
   },
-  {
-    path: 'datos',
-    loadChildren: () => import('./pages/datos/datos.module').then( m => m.DatosPageModule),
-    canActivate: [IngresadoGuard]
-  },
+
+
   
 
 ];

@@ -6,6 +6,7 @@ export interface Usuario{
   correoUsuario: String;
   passUsuario: String;
   repassUsuario: String;
+  esProf: boolean;
 }
 
 const USERS_KEY = 'my-usuarios';

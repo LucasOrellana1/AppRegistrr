@@ -17,7 +17,7 @@ export class IngresadoGuard implements CanActivate {
         return true;
       }
       else{
-        this.navController.navigateRoot('login');
+        this.navController.navigateRoot('');
         return false;
       }
   }
