@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  nombreEstudiante = 'Juan';
-  apellidoEstudiante = 'Pérez';
+  nombreEstudiante = localStorage.getItem('nombre');
+  correoEstudiante = localStorage.getItem('correo');
   edadEstudiante = 20;
   carreraEstudiante = 'Ingeniería Informática';
   
@@ -18,9 +18,13 @@ export class InicioPage implements OnInit {
 
   async logout(){
     localStorage.removeItem('ingresado');
+    localStorage.removeItem('esProf');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('correo');
     window.location.reload();
 
   }
+  
 
 
   ngOnInit() {

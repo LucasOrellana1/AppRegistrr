@@ -19,6 +19,18 @@
           <ion-input formControlName="correo"></ion-input>
         </ion-item>
 
+
+        <div class="error-container">
+          <ng-container>
+            <div class="error-message" *ngIf="correo?.invalid && correo?.touched">
+
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>Email invalido</span>
+
+            </div>
+          </ng-container>
+        </div>
+
         <ion-item>
           <ion-label position="floating">Password: </ion-label>
           <ion-input formControlName="password" type="password"></ion-input>

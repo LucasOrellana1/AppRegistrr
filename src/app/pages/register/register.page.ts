@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { RegistroserviceService, Usuario } from 'src/app/services/login/registroservice.service';
 import { matchpass } from './matchpass';
+import { correoExistenteValidator } from './samemail';
 
 @Component({
   selector: 'app-register',
@@ -33,24 +34,37 @@ export class RegisterPage implements OnInit {
                   'nombre' : new FormControl("", 
                   [Validators.required, 
                     Validators.minLength(3), 
-                    this.noEspaciosValidator, 
-                    /* Validators.pattern('^[a-z0-9]+$') */
-                    ] 
+                    Validators.pattern('^[a-zA-Z\\s]*$')
+                  ] 
                   ),
-                  'correo' : new FormControl("", [Validators.required,Validators.email, 
-                    this.noEspaciosValidator, ]),
+                  'correo' : new FormControl("", 
+                  [Validators.required,
+                    Validators.email,
+                    /* correoExistenteValidator(this.registroService), */
+                    RegisterPage.noEspaciosValidator, 
+                
+                  ],
+                    ),
 
                   'password' : new FormControl("", [Validators.required,
-                     Validators.minLength(6), this.noEspaciosValidator,
+                     Validators.minLength(6), RegisterPage.noEspaciosValidator,
                      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]),
 
                   'confirmPass' : new FormControl("", Validators.required),
-                  'esProf' : new FormControl("", Validators.required),
+
+                  'esProfesor': new FormControl(false, Validators.required)
                   
             },{
               validators: matchpass
             });
 };
+static noEspaciosValidator(control: any) {
+  if (control.value && /\s/.test(control.value)) {
+    return { noEspacios: true }; // Retorna un error si encuentra espacios en blanco
+  }
+  return null; // Retorna nulo si no se encontraron espacios en blanco
+  }
+
 get correo(){
   return this.formularioRegistro.get('correo');
 }
@@ -63,31 +77,11 @@ get password(){
 get confirmPass(){
   return this.formularioRegistro.get('password');
 }
+get esProfesor(){
+  return this.formularioRegistro.get('esProfesor');
+}
 
 
-// Mensajes de error: 
-validations = {
-  'password': [
-    { type: 'required', message: 'Password  is required.' },
-    { type: 'minlength', message: 'Password  must be at least 5 characters long.' },
-    { type: 'maxlength', message: 'Password  cannot be more than 25 characters long.' },
-    { type: 'pattern', message: 'Your Password  must contain only numbers and letters.' },
-    { type: 'Password NotAvailable', message: 'Your Password  is already taken.' }
-  ],
-
-};
-
-  noEspaciosValidator(control: any) {
-    if (control.value && /\s/.test(control.value)) {
-      return { noEspacios: true }; // Retorna un error si encuentra espacios en blanco
-    }
-    return null; // Retorna nulo si no se encontraron espacios en blanco
-    }
-  
-  //MSG de error
-
-  
- 
   async CrearUsuario(){
       //console.log('Guardar');
     var form= this.formularioRegistro.value;
@@ -105,7 +99,9 @@ validations = {
     this.newUsuario.nomUsuario = form.nombre,
     this.newUsuario.correoUsuario = form.correo,
     this.newUsuario.passUsuario = form.password,
-    this.newUsuario.repassUsuario = form.confirmPass
+    this.newUsuario.repassUsuario = form.confirmPass,
+    this.newUsuario.esProf = form.esProfesor,
+
     this.registroService.addDatos(this.newUsuario).then(dato => {
       this.newUsuario = <Usuario>{};
       this.showToast('!Datos Agregados!');

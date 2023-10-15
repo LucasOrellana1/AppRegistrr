@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegisterDocentePageRoutingModule } from './register-docente-routing.module';
+import { GenQrPageRoutingModule } from './gen-qr-routing.module';
 
-import { RegisterDocentePage } from './register-docente.page';
+import { GenQrPage } from './gen-qr.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterDocentePageRoutingModule
+    GenQrPageRoutingModule
   ],
-  declarations: [RegisterDocentePage]
+  declarations: [GenQrPage]
 })
-export class RegisterDocentePageModule {}
+export class GenQrPageModule {}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IngresadoGuard } from './ingresado.guard';
 import { NoIngresadoGuard } from './no-ingresado.guard';
+import { ProfesorGuard } from './profesor.guard';
 
 const routes: Routes = [
   {
@@ -28,10 +29,18 @@ const routes: Routes = [
     path: 'context',
     loadChildren: () => import('./pages/context/context.module').then( m => m.ContextPageModule),
     canActivate: [IngresadoGuard]
-  },  {
-    path: 'register-docente',
-    loadChildren: () => import('./pages/register-docente/register-docente.module').then( m => m.RegisterDocentePageModule)
   },
+  {
+    path: 'camara',
+    loadChildren: () => import('./pages/context/context.module').then( m => m.ContextPageModule),
+  },
+  {
+    path: 'gen-qr',
+    loadChildren: () => import('./pages/gen-qr/gen-qr.module').then( m => m.GenQrPageModule),
+    canActivate: [ProfesorGuard]
+
+  },
+
 
 
   

@@ -20,6 +20,11 @@ export class AppComponent {
       name: 'About',
       redirecTo: '/about'
     },
+    {
+      icon: 'clipboard',
+      name: 'Generar Qr',
+      redirecTo: '/gen-qr'
+    },
     
 
   ]

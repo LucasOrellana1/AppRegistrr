@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { RegisterPage } from 'src/app/pages/register/register.page';
+
 import{
   FormControl,
   Validators,
@@ -29,13 +31,23 @@ export class LoginPage implements OnInit {
     private registroServicie: RegistroserviceService,
     private fb: FormBuilder) { 
       this.formularioLogin = this.fb.group({
-        'correo' : new FormControl("", Validators.required),
+        'correo' : new FormControl("",[Validators.required,
+          Validators.email, 
+          RegisterPage.noEspaciosValidator]),
+
         'password' : new FormControl("", Validators.required),
       })
-                }
+};
 
-  ngOnInit() {
-  }
+get correo(){
+  return this.formularioLogin.get('correo');
+}
+
+get password(){
+  return this.formularioLogin.get('password');
+}
+
+ 
 
   async Ingresar(){
     var f = this.formularioLogin.value;
@@ -53,7 +65,16 @@ export class LoginPage implements OnInit {
           a=1
           console.log('ingresado');
           localStorage.setItem('ingresado', 'true');
-          this.alertMsgP('Bienvenido', 'n ' + obj.nomUsuario);
+          localStorage.setItem('nombre', obj.nomUsuario);
+          localStorage.setItem('correo', obj.correoUsuario);
+
+          console.log(obj.esProf);
+          //Añade un key de profesor
+          if(obj.esProf === 'true'){
+            localStorage.setItem('esProf', 'true');
+          }
+
+          this.alertMsgP('Bienvenido', obj.nomUsuario);
           this.navController.navigateRoot('inicio');
         }
       }
@@ -87,5 +108,6 @@ export class LoginPage implements OnInit {
       await alert.present();
       return;
   }
-
+  ngOnInit() {
+  }
 }
