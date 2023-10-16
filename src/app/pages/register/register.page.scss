@@ -1,0 +1,51 @@
+.contenedor-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+
+    .icono{
+    max-width: 12rem;
+    margin: 0rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+}
+
+
+.centered-card {
+  max-width: 400px; /* Ajusta el ancho según tus necesidades */
+  width: 100%;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.cardcolor{
+    background: #b1a38bfb;
+    color: #3f2e27;
+}
+
+.titulocard{
+    color: rgb(58, 58, 58);
+
+}
+
+.textcolor{
+    text-decoration: underline;
+    
+}
+
+.btncolor{
+    color: #3f2e27;
+    background: #776862;
+    padding: 5px;
+    border-radius: 0.5rem;
+}

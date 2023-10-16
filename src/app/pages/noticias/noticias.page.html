@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dias Feriados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-col *ngFor=" let feriado of data">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="content-card-title">{{feriado.nombre}}</ion-card-title>
+          <ion-card-subtitle class="content-card-title">{{feriado.fecha | date:'MM/dd'}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="content-card-title">Ley asociado al dia : <a href="{{feriado.leyes[0].url}}">{{feriado.leyes[0].url}}</a></p>
+          <p class="content-card-title">¿Es irrenunciable? {{ feriado.irrenunciable == 1 ? 'Sí':'No' }}</p>
+          <p class="content-card-title">Tipo de Feriado: {{feriado.tipo}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    </ion-grid>
+</ion-content>

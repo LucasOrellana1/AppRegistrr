@@ -1,0 +1,24 @@
+.contenedor{
+    padding: 1rem;
+}
+.contenido{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.centro{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.imgen{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
