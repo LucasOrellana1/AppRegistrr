@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ContextPageRoutingModule } from './context-routing.module';
+import { DatosPageRoutingModule } from './datos-routing.module';
 
-import { ContextPage } from './context.page';
+import { DatosPage } from './datos.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContextPageRoutingModule
+    DatosPageRoutingModule,
   ],
-  declarations: [ContextPage]
+  declarations: [DatosPage]
 })
-export class ContextPageModule {}
+export class DatosPageModule {}

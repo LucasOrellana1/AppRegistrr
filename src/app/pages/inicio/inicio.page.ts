@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UsersService } from 'src/app/services/users.service';
 
 
 @Component({
@@ -7,27 +7,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-export class InicioPage implements OnInit {
-
-  nombreEstudiante = localStorage.getItem('nombre');
-  correoEstudiante = localStorage.getItem('correo');
+export class InicioPage {
+  
+  nombreEstudiante = this.user.getEstudiante().displayName;
+  correoEstudiante = this.user.getEstudiante().email;
   edadEstudiante = 20;
   carreraEstudiante = 'Ingeniería Informática';
-  
-  constructor() { }
+ 
+  constructor(private user: UsersService) {
+    
+   }
 
   async logout(){
-    localStorage.removeItem('ingresado');
-    localStorage.removeItem('esProf');
-    localStorage.removeItem('nombre');
-    localStorage.removeItem('correo');
-    window.location.reload();
+    this.user.logout();
 
   }
   
 
-
-  ngOnInit() {
-  }
 
 }

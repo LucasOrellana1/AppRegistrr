@@ -12,7 +12,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      <form [formGroup] = "formularioLogin">
+      <form (ngSubmit)="onSubmit()" [formGroup] = "formularioLogin">
 
         <ion-item>
           <ion-label position="floating">Correo: </ion-label>
@@ -35,10 +35,15 @@
           <ion-label position="floating">Password: </ion-label>
           <ion-input formControlName="password" type="password"></ion-input>
         </ion-item>
+
+        <ion-button type="submit" [disabled]="formularioLogin.invalid" expand="block" fill="clear" shape="round"> Ingresar</ion-button>
+
       </form>
       <br>
-      <ion-button (click)="Ingresar()" expand="block" fill="clear" shape="round"> Ingresar</ion-button>
+      
+      
     </ion-card-content>
+  
   </ion-card>
 </ion-content>
 

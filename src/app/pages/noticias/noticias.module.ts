@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { GenQrPageRoutingModule } from './gen-qr-routing.module';
+import { NoticiasPageRoutingModule } from './noticias-routing.module';
 
-import { GenQrPage } from './gen-qr.page';
+import { NoticiasPage } from './noticias.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GenQrPageRoutingModule
+    NoticiasPageRoutingModule
   ],
-  declarations: [GenQrPage]
+  declarations: [NoticiasPage]
 })
-export class GenQrPageModule {}
+export class NoticiasPageModule {}

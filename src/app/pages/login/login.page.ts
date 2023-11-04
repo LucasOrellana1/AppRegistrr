@@ -10,7 +10,7 @@ import{
   FormGroup
 } from '@angular/forms';
 
-import { RegistroserviceService, Usuario } from 'src/app/services/login/registroservice.service';
+import { UsersService } from 'src/app/services/users.service';
 
 
 
@@ -27,8 +27,8 @@ export class LoginPage implements OnInit {
 
   constructor( 
     private alterController: AlertController,
+    private user: UsersService,
     private navController: NavController,
-    private registroServicie: RegistroserviceService,
     private fb: FormBuilder) { 
       this.formularioLogin = this.fb.group({
         'correo' : new FormControl("",[Validators.required,
@@ -48,47 +48,11 @@ get password(){
 }
 
  
+onSubmit(){
+  this.user.login(this.formularioLogin.value);
+}
 
-  async Ingresar(){
-    var f = this.formularioLogin.value;
-    var a = 0;
-    this.registroServicie.getUsuarios().then(datos =>{
-      this.usuarios=datos;
-     if (datos == null)
-      {
-        this.alertMsgP("Error" ,"No hay cuentas almacenadas");
-        return null;
-      }
- 
-      for(let obj of this.usuarios){
-        if (obj.correoUsuario == f.correo && obj.passUsuario == f.password){
-          a=1
-          console.log('ingresado');
-          localStorage.setItem('ingresado', 'true');
-          localStorage.setItem('nombre', obj.nomUsuario);
-          localStorage.setItem('correo', obj.correoUsuario);
-
-          console.log(obj.esProf);
-          //Añade un key de profesor
-          if(obj.esProf === 'true'){
-            localStorage.setItem('esProf', 'true');
-          }
-
-          this.alertMsgP('Bienvenido', obj.nomUsuario);
-          this.navController.navigateRoot('inicio');
-        }
-      }
-      console.log(a);
-      if (a==0){
-        this.alertMsg();
-      }
-    
-      return null;
-    });
-    
-  }
   
-
   async alertMsg(){
     const alert = await this.alterController.create({
       header: 'Error...',

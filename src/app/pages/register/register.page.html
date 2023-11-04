@@ -13,7 +13,7 @@
     <ion-card-content>
      
 
-      <form [formGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
+      <form [formGroup] = "formularioRegistro" (ngSubmit)="onSubmit()">
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
           <ion-input type="text" formControlName="nombre"></ion-input>
@@ -86,30 +86,9 @@
           </ng-container>
         </div>
 
-<!-- Es profe ?-->
-       
-      <ion-list>
-        <ion-radio-group formControlName="esProfesor">
-          <ion-list-header>
-            ¿Es usted profesor?
-          </ion-list-header>
-
-          <ion-item>
-            <ion-label>Sí</ion-label>
-            <ion-radio slot="start" value="true"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio slot="start" value="false"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-
-<!-- Cierre radio -->
 
         <br>
-        <ion-button (click)="CrearUsuario()" [disabled]="formularioRegistro.invalid" expand="block" fill="clear" shape="round" routerLink="/">
+        <ion-button type ="submit" [disabled]="formularioRegistro.invalid" expand="block" fill="clear" shape="round" routerLink="/">
           Registrarse
         </ion-button>
         

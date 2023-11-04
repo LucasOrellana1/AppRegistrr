@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+/* import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { RegistroserviceService } from 'src/app/services/login/registroservice.service';
 
 export function correoExistenteValidator(registroService: RegistroserviceService): ValidatorFn {
@@ -19,4 +19,4 @@ export function correoExistenteValidator(registroService: RegistroserviceService
     
         return null; // El correo no existe, no hay error
       };
-    }
+    } */

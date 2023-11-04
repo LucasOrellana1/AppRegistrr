@@ -25,7 +25,11 @@ export class AppComponent {
       name: 'Generar Qr',
       redirecTo: '/gen-qr'
     },
-    
+    {
+      icon: 'newspaper',
+      name: 'Feriados Legales',
+      redirecTo: '/noticias',
+    },
 
   ]
 }
