@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Auth,createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword , signOut} from '@angular/fire/auth';
+import { Auth,createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword , signOut, updateEmail} from '@angular/fire/auth';
 
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { sendEmailVerification, updateCurrentUser, updateProfile, verifyBeforeUpdateEmail } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UsersService {
+
 
   constructor(private fire: AngularFirestore,
               private auth: Auth,
@@ -23,38 +25,38 @@ export class UsersService {
     this.fire.collection('Estudiante').valueChanges().subscribe( (res) => 
     { 
       console.log(res);
-
-/*       nombre = res;
- */    });
+    });
   }
 
-
-  updateUserProfile(displayName: string, photoURL: string) {
-    this.afAuth.currentUser
-      .then((user) => {
-        return user?.updateProfile({ displayName, photoURL });
-      })
-      .then(() => {
-        console.log('Perfil actualizado con éxito.');
-      })
-      .catch((error) => {
-        console.error('Error al actualizar el perfil:', error);
-      });
-  }
 
   registerUser(json: any){
-    console.log(json);
-     createUserWithEmailAndPassword(this.auth, json.correo, json.password)
+    
+    // CREA PROFILE 
+    createUserWithEmailAndPassword(this.auth, json.correo, json.password)
         .then(userCredential => {
           const user  = userCredential.user;
+          console.log('Usuario creado: ' , user.uid);
 
-          this.updateUserProfile(json.nombre, 'qawd');
-        
+          updateEmail(user , json.email).then(() => {
+            console.log("Hecho 1")
+
+          }).catch((error) => {
             
+          });
+          
+          updateProfile(user , {
+            displayName: json.nombre, 
+            photoURL: "abc"
+          }).then(() => {
+            console.log("Hecho 2")
+          }).catch((error) => {
+         
+          });
+        
+          // CREA FIRESTORE
           this.fire.collection('Estudiante').doc(user.uid).set({
             correo: json.correo,
             nombre: json.nombre,
-          
           }) 
           .then(() => {
             console.log('Usuario registrado con éxito y datos adicionales almacenados.');
@@ -63,6 +65,7 @@ export class UsersService {
           .catch(error => {
             console.error('Error al almacenar datos adicionales:', error);
           });
+
         })
         .catch(error => {
           console.error('Error al registrar usuario:', error);
@@ -70,7 +73,6 @@ export class UsersService {
   }
 
   login(json:any){
-    console.log('cccc');
     return signInWithEmailAndPassword(this.auth, json.correo, json.password)
     .then(() => {
       console.log('Logeado con exito');
@@ -85,22 +87,58 @@ export class UsersService {
   logout(){
     signOut(this.auth);
     this.router.navigate(['']);
-    
   }
 
-  getEstudiante(): any{
-    
-    const auth = getAuth();
-    const user = auth.currentUser;
+
+verificarNuevoCorreo() {
+  this.afAuth.authState.subscribe((user:any) => {
+  if (user) {
+    // Enviar el correo de verificación al nuevo correo electrónico
+    user
+      .sendEmailVerification()
+      .then(() => {
+        console.log('Correo de verificación enviado al nuevo correo electrónico.');
+      })
+      .catch((error: any) => {
+        console.error('Error al enviar el correo de verificación:', error);
+      });
+    }
+  })
+}
+
+
+
+ actualizarEstudiante(json: any){
+ //Obtiene los datos actuales 
+  this.afAuth.authState.subscribe((user:any) => {
+  // ACtualiza FIRESTORE
     console.log(user);
     
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      return user;
+    this.fire.collection('Estudiante').doc(user.uid).set({
+    correo: json.correo,
+    nombre: json.nombre,
+    }) 
+      .then(() => {
+        console.log('Usuario registrado con éxito y datos adicionales almacenados.');
+        
+       
+            verifyBeforeUpdateEmail(user, json.correo).then(() => {
+                console.log("wena")
+              }).catch((error) => {
+                console.log(error)
+                console.log("wena'nt")
+              });
+      })
 
-    } else {
-      // No user is signed in.
-      return null;
+
+      updateProfile(user , {
+        displayName: json.nombre, 
+        photoURL: "abc"
+      }).then(() => {
+        console.log("Hecho 2")
+      }).catch((error) => {
+      });
+    })
+      this.router.navigate(['/']); 
     }
-}}
+}

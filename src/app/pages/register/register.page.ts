@@ -14,8 +14,7 @@ import {
 } from '@angular/forms';
 
 import { matchpass } from './matchpass';
-/* import { correoExistenteValidator } from './samemail';
- */import { UsersService } from 'src/app/services/users.service';
+ import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -55,6 +54,7 @@ export class RegisterPage implements OnInit {
               validators: matchpass
             });
 };
+
 static noEspaciosValidator(control: any) {
   if (control.value && /\s/.test(control.value)) {
     return { noEspacios: true }; // Retorna un error si encuentra espacios en blanco
@@ -74,9 +74,7 @@ get password(){
 get confirmPass(){
   return this.formularioRegistro.get('password');
 }
-get esProfesor(){
-  return this.formularioRegistro.get('esProfesor');
-}
+
 
 
 

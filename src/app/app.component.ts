@@ -16,14 +16,14 @@ export class AppComponent {
 
   componentes : Componente[] = [
     {
+      icon: 'clipboard',
+      name: 'Perfil',
+      redirecTo: '/perfil'
+    },
+    {
       icon: 'clipboard-outline',
       name: 'About',
       redirecTo: '/about'
-    },
-    {
-      icon: 'clipboard',
-      name: 'Generar Qr',
-      redirecTo: '/gen-qr'
     },
     {
       icon: 'newspaper',
