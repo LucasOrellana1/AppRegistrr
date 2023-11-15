@@ -14,7 +14,7 @@
   
   <ion-card>
     <ion-card-header >
-      <ion-card-title class="menu-title">Información del Estudiante</ion-card-title>
+      <ion-card-title class="titulo">Información del Estudiante</ion-card-title>
     </ion-card-header>
     
     <ion-card-content >
@@ -33,10 +33,26 @@
           <ion-label>Carrera:</ion-label>
           <ion-text>{{ carreraEstudiante }}</ion-text>
         </ion-item>
+       
+        <ion-item>
+          <ion-buttons slot="">
+            <ion-button class="button" [routerLink]="['/update']"> Actualizar mis datos </ion-button>
+          </ion-buttons>
 
-        <ion-buttons slot="end">
-          <ion-button class="button" [routerLink]="['/update']"> Actualizar mis datos </ion-button>
-        </ion-buttons>
+        </ion-item>
+        
+        <ion-item>
+          <ion-buttons slot="">
+            <ion-button class="button" (click) = "cambiarPass()"> Actualizar contraseña </ion-button>
+          </ion-buttons>
+        </ion-item>
+        
+        <ion-item>
+          <ion-buttons slot="">
+            <ion-button class="button" (click) = "tomarAsistencia()"> Tomar asistencia prueba </ion-button>
+          </ion-buttons>
+        </ion-item>
+      
   
       </ion-list>
     </ion-card-content>

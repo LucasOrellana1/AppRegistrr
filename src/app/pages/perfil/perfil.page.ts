@@ -26,4 +26,14 @@ export class PerfilPage {
     this.userService.logout();
 
   }
+
+  cambiarPass(){
+    this.userService.actualizarPass("lu.orellana@duocuc.cl");
+    alert("Correo enviado");
+  }
+
+  tomarAsistencia(){
+    this.userService.asistencia({sala: '251',seccion: '001d',ramo:'Diseño web'}, 'Lucas Orellana1')
+  }
+  
 }

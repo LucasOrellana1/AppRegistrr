@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
@@ -19,13 +19,12 @@ import { matchpass } from '../register/matchpass';
 import { UsersService } from 'src/app/services/users.service';
 
 
-
 @Component({
-  selector: 'app-update',
-  templateUrl: './update.page.html',
-  styleUrls: ['./update.page.scss'],
+  selector: 'app-update-pass',
+  templateUrl: './update-pass.page.html',
+  styleUrls: ['./update-pass.page.scss'],
 })
-export class UpdatePage {
+export class UpdatePassPage  {
 
   formularioUpdate: FormGroup;
 
@@ -36,18 +35,6 @@ export class UpdatePage {
               
               private fb:FormBuilder) {
                 this.formularioUpdate = this.fb.group({
-                  'nombre' : new FormControl("", 
-                  [Validators.required, 
-                    Validators.minLength(3), 
-                    Validators.pattern('^[a-zA-Z\\s]*$')
-                  ] 
-                  ),
-                  'correo' : new FormControl("", 
-                  [Validators.required,
-                    Validators.email,
-                    /* correoExistenteValidator(this.registroService), */
-                  ],
-                  ),
                   'password' : new FormControl("", [Validators.required,
                      Validators.minLength(6),
                      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]),
@@ -76,11 +63,6 @@ get confirmPass(){
 onSubmit(){
   this.userService.actualizarEstudiante(this.formularioUpdate.value);
 };
-
-verificarcorreo(){
-  this.userService.verificarNuevoCorreo();
-  alert("Se envio correo de verificacion al correo ingresado.")
-}
 
 
 

@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'update',
     loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
   },
+  {
+    path: 'update-pass',
+    loadChildren: () => import('./pages/update-pass/update-pass.module').then( m => m.UpdatePassPageModule)
+  },
 
 
 
