@@ -16,8 +16,10 @@ export class CamaraPage implements OnInit {
   isSupported = false;
   barcodes: Barcode[] = [];
   scanResult: any='';
-
-
+  
+  p = {"nombre":"a","seccion":"001d","sala":"215"};
+/*   f = JSON.parse(this.p);
+ */  
   constructor(public alertController: AlertController,
     public navCtrl: NavController,
     private userService: UsersService,
@@ -55,13 +57,15 @@ export class CamaraPage implements OnInit {
     await alert.present();
   } */
 
-  onCodeResult(result:string)
+  onCodeResult(result:any)
   {
-    result = JSON.parse(result);
+/*     result = JSON.parse(result);
+ */    
     this.scanResult=result;
     this.afAuth.authState.subscribe((user:any) => {
       this.userService.asistencia(result, user.displayName);
-      this.router.navigate(['/qr']);
+      this.userService.presentAlert("Asistencia tomada", "Presente: " + user.displayName)
+      this.router.navigate(['/inicio']);
 
     })
     

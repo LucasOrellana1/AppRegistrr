@@ -7,7 +7,7 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-export class PerfilPage {
+export class PerfilPage implements OnInit{
   
   
   edadEstudiante = 20;
@@ -21,15 +21,21 @@ export class PerfilPage {
       console.log(user);
     });
   }
-  
-  logout(){
-    this.userService.logout();
 
+
+  ngOnInit(): void {
+    this.userService.usuarioActual$.subscribe(usuario => {
+      this.user = usuario;
+      console.log('Usuario actual:', this.user);
+    });
   }
 
+  logout(){
+    this.userService.logout();
+  }
   cambiarPass(){
-    this.userService.actualizarPass("lu.orellana@duocuc.cl");
-    alert("Correo enviado");
+    this.userService.actualizarPass(this.user.email);
+    this.userService.presentAlert("Correo enviado", "Revisa tu correo");
   }
 
   tomarAsistencia(){

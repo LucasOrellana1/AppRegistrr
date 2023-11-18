@@ -34,24 +34,29 @@
           <ion-text>{{ carreraEstudiante }}</ion-text>
         </ion-item>
        
-        <ion-item>
-          <ion-buttons slot="">
-            <ion-button class="button" [routerLink]="['/update']"> Actualizar mis datos </ion-button>
-          </ion-buttons>
-
-        </ion-item>
+        <ion-grid style="display: flex; align-items: center; flex-direction: column;">
+          <ion-row>
+            <ion-item>
+              <ion-buttons slot="start">
+                <ion-button class="button" [routerLink]="['/update']">Actualizar mis datos</ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-row>
         
-        <ion-item>
-          <ion-buttons slot="">
-            <ion-button class="button" (click) = "cambiarPass()"> Actualizar contraseña </ion-button>
-          </ion-buttons>
-        </ion-item>
+          <ion-row>
+            <ion-item>
+              <ion-buttons slot="start">
+                <ion-button class="button" (click)="cambiarPass()">Actualizar contraseña</ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-row>
+        </ion-grid>
         
-        <ion-item>
+      <!--   <ion-item>
           <ion-buttons slot="">
             <ion-button class="button" (click) = "tomarAsistencia()"> Tomar asistencia prueba </ion-button>
           </ion-buttons>
-        </ion-item>
+        </ion-item> -->
       
   
       </ion-list>

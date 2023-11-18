@@ -9,16 +9,14 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
-    <ion-card-header>
-      Ramos: 
-    </ion-card-header>
     
     <ng-container *ngIf="horario$ | async as horario">
       <div class="grid">
         <div *ngFor="let dia of getKeys(horario)" class="grid-item">
-          <h2>{{ dia }}</h2>
+          <h2>{{ dia | titlecase }}</h2>
           <div *ngFor="let ramo of getKeys(horario[dia])" class="grid-item">
-            <ion-button (click)="seleccionarRamo(horario[dia][ramo])" *ngIf="horario[dia][ramo]" expand="full">
+            <ion-button class="button" color="rgba(69,55,50,255)
+            " (click)="seleccionarRamo(horario[dia][ramo])" *ngIf="horario[dia][ramo]" >
               {{ ramo }}
               <ul>
                 <li *ngIf="horario[dia][ramo].sala">Sala: {{ horario[dia][ramo].sala }}</li>
@@ -38,9 +36,6 @@
   
   <div>
 
-    <ion-text color="primary">
-      <h1 class="Generarqr">Generar QR</h1>
-    </ion-text>
     <!-- <input type="text" [(ngModel)]="texto">  -->
     <br><br>
     <qrcode class="qr" [qrdata]="texto" [width]="400"> </qrcode>

@@ -79,9 +79,8 @@ onSubmit(){
 
 verificarcorreo(){
   this.userService.verificarNuevoCorreo();
-  alert("Se envio correo de verificacion al correo ingresado.")
+  this.userService.presentAlert("Cambios realizados", "Cambios exitosos");
+
 }
-
-
 
 };

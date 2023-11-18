@@ -46,6 +46,7 @@ seleccionarRamo(ramo: any): void {
   console.log('Ramo seleccionado:', this.ramoSeleccionado);
   // Puedes hacer lo que desees con el objeto seleccionado aquí
   this.texto = JSON.stringify(this.ramoSeleccionado);
+  console.log(this.texto);
 
 }
 

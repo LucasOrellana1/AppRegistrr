@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { sendEmailVerification, sendPasswordResetEmail, updateCurrentUser, updateProfile, verifyBeforeUpdateEmail } from 'firebase/auth';
 import { BehaviorSubject, Observable, switchMap, take } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 interface DocumentoAsistencia {
   sala: string;
@@ -27,11 +28,20 @@ interface Ramos {
 
 export class UsersService {
 
+  usuarioActual$: Observable<any> = new Observable;
+
+
   ramos: Ramos[] = [];
   constructor(private fire: AngularFirestore,
               private auth: Auth,
               private router: Router,
-              private afAuth: AngularFireAuth) { }
+              private afAuth: AngularFireAuth,
+              private alertController: AlertController) 
+    { 
+      
+      this.usuarioActual$ = this.afAuth.authState;
+
+    }
 
 
 getCollection(){
@@ -87,8 +97,13 @@ login(json:any){
   .then(() => {
     console.log('Logeado con exito');
     this.router.navigate(['/inicio']);
+    
+    this.afAuth.authState.subscribe((user:any) => {
+      this.presentAlert("Hola, de nuevo " + user.displayName, "-------");
 
+    })
   })
+
   .catch(error => {
     console.error('Error al logear: ', error);
   });
@@ -107,8 +122,11 @@ login_profesor(json:any){
 }
 
 logout(){
-  signOut(this.auth);
-  this.router.navigate(['']);
+  signOut(this.auth).then(() => {
+    this.router.navigate(['']);
+    this.presentAlert("Saliendo de la aplicación", "Volviendo al login");
+})
+
 }
 
 verificarNuevoCorreo() {
@@ -124,12 +142,6 @@ verificarNuevoCorreo() {
         console.error('Error al enviar el correo de verificación:', error);
       });
     }
-  })
-}
-
-getEstudianteActual(){
-  this.afAuth.authState.subscribe((user:any) => {
-    return user;
   })
 }
 
@@ -189,9 +201,7 @@ getRamos(){
   this.fire.collection('Profesor').doc('6biO0bY6CVeBrSNdP6k5mSMElSq1').get().subscribe((docSnapshot: any) => {
     // Accede directamente al objeto de documento
     const horario = docSnapshot.data().horario;
-    console.log("a")
     console.log(horario);
-    console.log("b")
     
     this.horarioSubject.next(horario);
   });
@@ -201,11 +211,15 @@ getRamos(){
 
 
 asistencia(datos:any, nombre:string){
-  
+
+  console.log(datos.sala);
+  console.log(datos.ramo);
+
+
   const asistenciaHoy: DocumentoAsistencia = {
     sala: datos.sala,
     seccion: datos.seccion,
-    ramo: datos.ramo,
+    ramo: datos.nombre,
     asistentes: [nombre],
   };
   
@@ -214,7 +228,7 @@ asistencia(datos:any, nombre:string){
   
   console.log(fechaFormateada)
 
-  const documentoRef = this.fire.collection('Asistencia').doc(fechaFormateada + datos.seccion);
+  const documentoRef = this.fire.collection('Asistencia').doc(fechaFormateada + ' ' + datos.seccion);
  
     // Utiliza switchMap para manejar la lógica de actualización basada en si el documento existe o no
     
@@ -251,5 +265,16 @@ asistencia(datos:any, nombre:string){
       }
     );
 
-}}
+}
+async presentAlert(header:string, msg: string) {
+  const alert = await this.alertController.create({
+    header: header,
+    message: msg,
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
+}
 

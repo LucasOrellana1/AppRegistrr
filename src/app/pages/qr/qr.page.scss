@@ -2,6 +2,7 @@
 .qr{
     border: 1rem;
     border-radius: 1rem;
+    margin-bottom: 4rem;
 }
 
 
@@ -16,14 +17,24 @@ div{
 
 li{
     list-style: none;
+    margin: 2px 0;
+    line-height: normal;
+
 }
 .grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Crear 5 columnas igualmente espaciadas */
     grid-gap: 10px; /* Espaciado entre las celdas */
-  }
-  
-  .grid-item {
+}
+
+.grid-item {
     padding: 10px; /* Espaciado dentro de cada celda */
     box-sizing: border-box;
-  }
+}
+
+
+ion-button{
+    background-color: rgba(69,55,50,255)
+    !important;
+    color: white;
+}
