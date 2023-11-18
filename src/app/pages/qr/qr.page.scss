@@ -1,0 +1,29 @@
+
+.qr{
+    border: 1rem;
+    border-radius: 1rem;
+}
+
+
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+
+li{
+    list-style: none;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Crear 5 columnas igualmente espaciadas */
+    grid-gap: 10px; /* Espaciado entre las celdas */
+  }
+  
+  .grid-item {
+    padding: 10px; /* Espaciado dentro de cada celda */
+    box-sizing: border-box;
+  }

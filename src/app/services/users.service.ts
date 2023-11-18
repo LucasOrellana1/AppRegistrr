@@ -6,13 +6,18 @@ import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { sendEmailVerification, sendPasswordResetEmail, updateCurrentUser, updateProfile, verifyBeforeUpdateEmail } from 'firebase/auth';
-import { switchMap, take } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap, take } from 'rxjs';
 
 interface DocumentoAsistencia {
   sala: string;
   seccion: string;
   ramo: string;
   asistentes?: string[];
+}
+
+interface Ramos {
+  id: string;
+  data: {sala: string, seccion: string, nombre: string }; // Un objeto con claves de tipo string y valores de cualquier tipo
 }
 
 
@@ -22,7 +27,7 @@ interface DocumentoAsistencia {
 
 export class UsersService {
 
-
+  ramos: Ramos[] = [];
   constructor(private fire: AngularFirestore,
               private auth: Auth,
               private router: Router,
@@ -38,7 +43,7 @@ getCollection(){
 }
 
 
-registerUser(json: any){    
+registerUser(json: any, tipo: string){    
 // CREA PROFILE 
 createUserWithEmailAndPassword(this.auth, json.correo, json.password)
     .then(userCredential => {
@@ -59,7 +64,7 @@ createUserWithEmailAndPassword(this.auth, json.correo, json.password)
       });
     
       // CREA FIRESTORE
-      this.fire.collection('Estudiante').doc(user.uid).set({
+      this.fire.collection(tipo).doc(user.uid).set({
         correo: json.correo,
         nombre: json.nombre,
       }) 
@@ -89,11 +94,22 @@ login(json:any){
   });
 }
 
+login_profesor(json:any){
+  return signInWithEmailAndPassword(this.auth, json.correo, json.password)
+  .then(() => {
+    console.log('Logeado con exito');
+    this.router.navigate(['/qr']);
+
+  })
+  .catch(error => {
+    console.error('Error al logear: ', error);
+  });
+}
+
 logout(){
   signOut(this.auth);
   this.router.navigate(['']);
 }
-
 
 verificarNuevoCorreo() {
   this.afAuth.authState.subscribe((user:any) => {
@@ -115,8 +131,6 @@ getEstudianteActual(){
   this.afAuth.authState.subscribe((user:any) => {
     return user;
   })
- 
-
 }
 
 
@@ -168,22 +182,22 @@ actualizarPass(json: any){
 
 }
 
-contenidoQr(){
-  this.afAuth.authState.subscribe((user:any) => {
-    const id = user.id;
-    const documentRef = this.fire.collection('Ramos').doc(id);
+private horarioSubject = new BehaviorSubject<any>(null);
+horario$: Observable<any> = this.horarioSubject.asObservable();
+
+getRamos(){
+  this.fire.collection('Profesor').doc('6biO0bY6CVeBrSNdP6k5mSMElSq1').get().subscribe((docSnapshot: any) => {
+    // Accede directamente al objeto de documento
+    const horario = docSnapshot.data().horario;
+    console.log("a")
+    console.log(horario);
+    console.log("b")
     
-    documentRef.valueChanges().pipe(
-      take(1)
-    ).subscribe(data => {
-      // `data` contiene los contenidos del documento como un objeto JSON
-      const jsonData = JSON.stringify(data);
-      console.log(jsonData);
-      return jsonData;
-      // Puedes almacenar jsonData en una variable si es necesario
-    });
-  }); 
+    this.horarioSubject.next(horario);
+  });
 }
+
+
 
 
 asistencia(datos:any, nombre:string){
@@ -200,7 +214,7 @@ asistencia(datos:any, nombre:string){
   
   console.log(fechaFormateada)
 
-  const documentoRef = this.fire.collection('Asistencia').doc(fechaFormateada);
+  const documentoRef = this.fire.collection('Asistencia').doc(fechaFormateada + datos.seccion);
  
     // Utiliza switchMap para manejar la lógica de actualización basada en si el documento existe o no
     

@@ -1,14 +1,13 @@
 <ion-header [translucent]="true">
-  
-  <ion-toolbar >
-    <ion-title>Login</ion-title>
+  <ion-toolbar>
+    <ion-title>profesor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-    <ion-card-title class="titulo">Login</ion-card-title>
+    <ion-card-title class="titulo">Login Profesor</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -36,23 +35,11 @@
           <ion-input formControlName="password" type="password"></ion-input>
         </ion-item>
 
-        <ion-button type="submit" [disabled]="formularioLogin.invalid" expand="block" fill="clear" [routerLink]="['/']" shape="round"> Ingresar</ion-button>
+        <ion-button [routerLink]="['/qr']" type="submit" [disabled]="formularioLogin.invalid"  expand="block" fill="clear" shape="round"> Ingresar</ion-button>
 
       </form>
       <br>
-      
-      
     </ion-card-content>
   
   </ion-card>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar >
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="['/register']">Registrarse
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
-

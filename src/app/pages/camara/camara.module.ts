@@ -6,14 +6,19 @@ import { IonicModule } from '@ionic/angular';
 
 import { CamaraPageRoutingModule } from './camara-routing.module';
 
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 import { CamaraPage } from './camara.page';
+
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CamaraPageRoutingModule
+    CamaraPageRoutingModule,
+    ZXingScannerModule
   ],
   declarations: [CamaraPage]
 })

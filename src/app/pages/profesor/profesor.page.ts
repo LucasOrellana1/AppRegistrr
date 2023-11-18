@@ -13,15 +13,12 @@ import{
 import { UsersService } from 'src/app/services/users.service';
 
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-profesor',
+  templateUrl: './profesor.page.html',
+  styleUrls: ['./profesor.page.scss'],
 })
-
-export class LoginPage  {
-
+export class ProfesorPage{
   usuarios!: any;
   formularioLogin : FormGroup;
 
@@ -49,7 +46,7 @@ get password(){
 
  
 onSubmit(){
-  this.user.login(this.formularioLogin.value);
+  this.user.login_profesor(this.formularioLogin.value);
 }
 
 }

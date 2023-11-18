@@ -14,6 +14,7 @@ interface Componente{
 export class AppComponent {
   constructor() {}
 
+
   componentes : Componente[] = [
     {
       icon: 'clipboard',
@@ -26,10 +27,20 @@ export class AppComponent {
       redirecTo: '/about'
     },
     {
-      icon: 'newspaper',
+      icon: 'camera-outline',
+      name: 'Camara',
+      redirecTo: '/camara'
+    },
+    {
+      icon: 'newspaper-outline',
       name: 'Feriados Legales',
       redirecTo: '/noticias',
     },
-
+    {
+      icon: 'square',
+      name: 'Generar QR',
+      redirecTo: '/qr',
+    },
+    
   ]
 }

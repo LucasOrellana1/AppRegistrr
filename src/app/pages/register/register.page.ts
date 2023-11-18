@@ -14,14 +14,15 @@ import {
 } from '@angular/forms';
 
 import { matchpass } from './matchpass';
- import { UsersService } from 'src/app/services/users.service';
+/* import { correoExistenteValidator } from './samemail';
+ */import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
 
   formularioRegistro: FormGroup;
   errores: string[] = [];
@@ -54,7 +55,6 @@ export class RegisterPage implements OnInit {
               validators: matchpass
             });
 };
-
 static noEspaciosValidator(control: any) {
   if (control.value && /\s/.test(control.value)) {
     return { noEspacios: true }; // Retorna un error si encuentra espacios en blanco
@@ -74,33 +74,16 @@ get password(){
 get confirmPass(){
   return this.formularioRegistro.get('password');
 }
-
+get esProfesor(){
+  return this.formularioRegistro.get('esProfesor');
+}
 
 
 
   onSubmit() {
     console.log("bbbbb");
-    this.user.registerUser(this.formularioRegistro.value)
+    this.user.registerUser(this.formularioRegistro.value, 'Estudiante')
     
-    
-    /* if (this.formularioRegistro.valid) {
-      const data = this.formularioRegistro.value;
-      console.log(data);
-      this.user.createDocument(data);
-    } */
-  }
-
-
-
-
-  async showToast(msg: string){
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 2000
-    });
-    toast.present();
-  }
-  ngOnInit() {
   }
 
   

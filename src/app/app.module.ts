@@ -11,6 +11,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+//Libreria Scanner
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 //Librerias de storage(CRUD)
 import { IonicStorageModule } from '@ionic/storage-angular';
@@ -29,18 +33,19 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [AppComponent],
-  imports: [
+  imports: [ZXingScannerModule, 
     BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot() ,
     FormsModule,
     ReactiveFormsModule,
-    
+
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule, 
+    AngularFirestoreModule,
+    
   
     
     AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot({
@@ -51,5 +56,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
