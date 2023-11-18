@@ -10,10 +10,14 @@
 </ion-header>
 <ion-content>
   <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
-
- 
   
-
+  <ion-button (click)="onCodeResult(p)" expand="block" fill="clear" shape="round">
+    Click me
+  </ion-button>
+ 
+  <p>{{ scanResult.nombre }}</p>
+  <p>{{ scanResult.sala }}</p>
+  <p>{{ scanResult.seccion }}</p>
   
 </ion-content>
 

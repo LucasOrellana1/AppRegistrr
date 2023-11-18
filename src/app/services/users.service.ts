@@ -212,8 +212,6 @@ getRamos(){
 
 asistencia(datos:any, nombre:string){
 
-  console.log(datos.sala);
-  console.log(datos.ramo);
 
 
   const asistenciaHoy: DocumentoAsistencia = {
