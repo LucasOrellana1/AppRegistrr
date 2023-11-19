@@ -19,7 +19,7 @@ export class CamaraPage implements OnInit {
   
 
 
-  p = {"nombre":"a","seccion":"001d","sala":"215"};
+  p = '{"nombre":"a","seccion":"001d","sala":"215"}';
 /*   f = JSON.parse(this.p);
  */  
   constructor(public alertController: AlertController,
@@ -61,9 +61,9 @@ export class CamaraPage implements OnInit {
 
   onCodeResult(result:any)
   {
-/*     result = JSON.parse(result);
- */    
-
+    
+    result = JSON.parse(result);
+    
     console.log(result);
 
     this.scanResult=result;

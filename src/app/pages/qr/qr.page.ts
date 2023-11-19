@@ -51,9 +51,6 @@ seleccionarRamo(ramo: any): void {
 }
 
 
- 
-
-  
 
   logout(){
     this.userService.logout();
