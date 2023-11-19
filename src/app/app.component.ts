@@ -35,12 +35,6 @@ export class AppComponent {
       icon: 'newspaper-outline',
       name: 'Feriados Legales',
       redirecTo: '/noticias',
-    },
-    {
-      icon: 'square',
-      name: 'Generar QR',
-      redirecTo: '/qr',
-    },
-    
+    },    
   ]
 }
