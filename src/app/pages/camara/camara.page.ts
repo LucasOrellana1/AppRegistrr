@@ -17,11 +17,7 @@ export class CamaraPage implements OnInit {
   barcodes: Barcode[] = [];
   scanResult: any='';
   
-
-
-  p = '{"nombre":"a","seccion":"001d","sala":"215"}';
-/*   f = JSON.parse(this.p);
- */  
+  
   constructor(public alertController: AlertController,
     public navCtrl: NavController,
     private userService: UsersService,

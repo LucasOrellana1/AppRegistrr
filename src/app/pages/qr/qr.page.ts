@@ -49,9 +49,6 @@ seleccionarRamo(ramo: any): void {
   console.log(this.texto);
 
 }
-
-
-
   logout(){
     this.userService.logout();
   }
