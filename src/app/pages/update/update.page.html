@@ -38,59 +38,10 @@
         
         </ion-item>
         
-        <div class="error-container">
-          <ng-container>
-          
-
-            <div *ngIf="correo?.hasError('correoExistente')">
-              El correo ingresado ya existe. Por favor, elige otro correo.
-            </div>
-          </ng-container>
-        </div>
-<!-- 
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-
-        <div class="error-container">
-          <ng-container>
-            <div class="error-message" *ngIf="password?.invalid && password?.touched">
-
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>Debe haber al menos una letra minúscula </span>
-              <br>
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>Debe haber al menos una letra mayúscula en la cadena</span>
-              <br>
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span> Debe haber al menos un dígito en la cadena</span>
-              <br>
-              <ion-icon name="information-circle-outline"></ion-icon>
-
-              <span>Ningun caracter especial</span>
-            </div>
-          </ng-container>
-        </div>
-
-        <ion-item>
-          <ion-label position="floating">Confirma Password</ion-label>
-          <ion-input type="password" formControlName="confirmPass"></ion-input>
-        </ion-item>
-        
-        <div class="error-container">
-          <ng-container>
-            <div class="error-message" *ngIf="formularioUpdate.errors?.['passMatchError']">
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>Las contraseñas no coinciden</span>
-
-            </div>
-          </ng-container>
-        </div> -->
-
+    
 
         <br>
-        <ion-button type ="submit" [disabled]="formularioUpdate.invalid" expand="block" fill="clear" shape="round" routerLink="/">
+        <ion-button type ="submit"  expand="block" fill="clear" shape="round" routerLink="/">
           Registrarse
         </ion-button>
         

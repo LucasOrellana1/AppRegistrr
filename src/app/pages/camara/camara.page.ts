@@ -70,8 +70,8 @@ export class CamaraPage implements OnInit {
     this.afAuth.authState.subscribe((user:any) => {
       this.userService.asistencia(result, user.displayName);
       this.userService.presentAlert("Asistencia tomada", "Presente: " + user.displayName)
-/*       this.router.navigate(['/inicio']);
- */
+      this.router.navigate(['/inicio']);
+
     })
     
 

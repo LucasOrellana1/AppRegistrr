@@ -100,12 +100,13 @@ login(json:any){
     
     this.afAuth.authState.subscribe((user:any) => {
       this.presentAlert("Hola, de nuevo " + user.displayName, "-------");
-
     })
   })
 
   .catch(error => {
     console.error('Error al logear: ', error);
+    this.presentAlert("DATOS INVALIDOS", "INVALIDOS O INEXISTENTES");
+
   });
 }
 
@@ -160,6 +161,8 @@ this.afAuth.authState.subscribe((user:any) => {
       console.log('Usuario registrado con éxito y datos adicionales almacenados.');
           verifyBeforeUpdateEmail(user, json.correo).then(() => {
               console.log("wena")
+              this.presentAlert("Correo enviado", "Se actualizaran los datos al verificar el nuevo correo")
+              this.logout();
             }).catch((error) => {
               console.log(error)
               console.log("wena'nt")
@@ -189,9 +192,7 @@ actualizarPass(json: any){
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(error);
-
     });
-
 }
 
 private horarioSubject = new BehaviorSubject<any>(null);
@@ -211,8 +212,6 @@ getRamos(){
 
 
 asistencia(datos:any, nombre:string){
-
-
 
   const asistenciaHoy: DocumentoAsistencia = {
     sala: datos.sala,
