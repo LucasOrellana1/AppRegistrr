@@ -1,61 +1,22 @@
-Descripción concisa de tu proyecto.
+# RegistrrApp
 
-## Requisitos Previos
+## Descripción
 
-Antes de comenzar con la instalación, asegúrate de tener instalado lo siguiente:
+**RegistrrApp** es una aplicación móvil diseñada para facilitar la toma de asistencia en eventos y clases mediante el escaneo de un código QR por parte de los asistentes. La aplicación asegura un manejo eficiente y seguro de los datos de asistencia, ofreciendo una experiencia de usuario intuitiva y rápida.
 
-- [Node.js](https://nodejs.org/) - Descarga e instala Node.js.
-- [Ionic](https://ionicframework.com/) - Instala Ionic globalmente usando npm:
+## Tecnologías Utilizadas
 
-  ```bash
-  npm install -g @ionic/cli
-Instalación
-Sigue estos pasos para configurar y ejecutar tu proyecto localmente:
+- **Angular**: Framework de desarrollo para aplicaciones web.
+- **Ionic**: Framework para el desarrollo de aplicaciones móviles híbridas.
+- **TypeScript**: Lenguaje de programación que mejora JavaScript.
+- **Firebase**: Plataforma de Google para el desarrollo de aplicaciones móviles y web.
+  - **Firestore**: Base de datos NoSQL en tiempo real.
+  - **Firebase Auth**: Servicio de autenticación de usuarios.
+- **RxJs**: Biblioteca para la programación reactiva utilizando observables.
 
-Clonar el Repositorio: Clona este repositorio en tu máquina local:
+## Funcionalidades Principales
 
-bash
-Copy code
-git clone https://tu-repositorio.git
-cd nombre-de-tu-proyecto
-Instalar Dependencias: Ejecuta el siguiente comando para instalar las dependencias del proyecto:
-
-bash
-Copy code
-npm install
-Configurar Environment: Asegúrate de configurar los archivos de entorno (environment.ts y environment.prod.ts) con las credenciales y configuraciones necesarias.
-
-Instalar Ionic Storage: Instala el módulo de almacenamiento de Ionic:
-
-bash
-Copy code
-npm install @ionic/storage-angular
-Configurar Ionic Storage: Importa y configura el módulo de almacenamiento en tu aplicación. Asegúrate de agregar IonicStorageModule.forRoot() en el módulo principal de la aplicación (por lo general, app.module.ts).
-
-Iniciar el Servidor de Desarrollo: Ejecuta la aplicación en un servidor de desarrollo local:
-
-bash
-Copy code
-ionic serve
-Esto iniciará la aplicación en el navegador y proporcionará una URL local para verla.
-
-Uso
-Descripción de cómo usar y probar la aplicación.
-
-Almacenamiento
-Este proyecto utiliza el servicio de almacenamiento de Ionic. Asegúrate de configurar y utilizar el almacenamiento según sea necesario en tu código.
-
-Contribución
-Si deseas contribuir a este proyecto, sigue estos pasos:
-
-Realiza un fork del repositorio.
-Crea una nueva rama para tu función o corrección de errores.
-Implementa tus cambios y pruebas.
-Envía un Pull Request con una descripción detallada de tus cambios.
-Licencia
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
-
-Contacto
-Autor: Tu Nombre
-Email: tu@email.com
-Sitio web: https://tu-sitio-web.com
+- **Escaneo de Código QR**: Captura rápida y precisa de la asistencia mediante el escaneo de códigos QR.
+- **Gestión de Usuarios y Asistencias**: Autenticación de usuarios y manejo seguro de los datos de asistencia en Firebase Firestore.
+- **Visualización de Datos en Tiempo Real**: Los datos de asistencia se actualizan en tiempo real y se muestran de manera clara y organizada.
+- **Diseño de Base de Datos Escalable**: Colecciones y documentos estructurados para garantizar la integridad y escalabilidad de los datos.
