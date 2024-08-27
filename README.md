@@ -20,3 +20,5 @@
 - **Gestión de Usuarios y Asistencias**: Autenticación de usuarios y manejo seguro de los datos de asistencia en Firebase Firestore.
 - **Visualización de Datos en Tiempo Real**: Los datos de asistencia se actualizan en tiempo real y se muestran de manera clara y organizada.
 - **Diseño de Base de Datos Escalable**: Colecciones y documentos estructurados para garantizar la integridad y escalabilidad de los datos.
+
+ **Trasnferido desde mi cuenta de estudiante**
